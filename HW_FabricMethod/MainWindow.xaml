@@ -6,54 +6,55 @@
         xmlns:local="clr-namespace:HW_FabricMethod"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Name="rootpanel">
         <Grid Margin="10 50" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Race</Label>
-            <RadioButton GroupName="Race" Content="Orc" HorizontalAlignment="Left" Margin="0,20,0,0"
+            <RadioButton GroupName="Race" Content="Orc" Checked="Race_OnChecked" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Race" Content="aeldari" HorizontalAlignment="Left" Margin="0,40,0,0"
+            <RadioButton GroupName="Race" Content="aeldari" Checked="Race_OnChecked"  HorizontalAlignment="Left" Margin="0,40,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Race" Content="human" HorizontalAlignment="Left" Margin="0,60,0,0"
+            <RadioButton GroupName="Race" Content="human" Checked="Race_OnChecked" HorizontalAlignment="Left" Margin="0,60,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Race" Content="tau" HorizontalAlignment="Left" Margin="0,80,0,0"
+            <RadioButton GroupName="Race" Content="tau" Checked="Race_OnChecked" HorizontalAlignment="Left" Margin="0,80,0,0"
                          VerticalAlignment="Top" />
         </Grid>
         <Grid Margin="150 50 0 0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Weapon</Label>
-            <RadioButton GroupName="Weapon" Content="sword" HorizontalAlignment="Left" Margin="0,20,0,0"
+            <RadioButton GroupName="Weapon" Checked="Weapon_OnChecked" Content="sword" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Weapon" Content="axe" HorizontalAlignment="Left" Margin="0,40,0,0"
+            <RadioButton GroupName="Weapon" Checked="Weapon_OnChecked" Content="axe" HorizontalAlignment="Left" Margin="0,40,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Weapon" Content="bow" HorizontalAlignment="Left" Margin="0,60,0,0"
+            <RadioButton GroupName="Weapon" Checked="Weapon_OnChecked" Content="bow" HorizontalAlignment="Left" Margin="0,60,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Weapon" Content="RadioButton" HorizontalAlignment="Left" Margin="0,80,0,0"
+            <RadioButton GroupName="Weapon" Checked="Weapon_OnChecked" Content="RadioButton" HorizontalAlignment="Left" Margin="0,80,0,0"
                          VerticalAlignment="Top" />
         </Grid>
         <Grid Margin="300 50" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Armor</Label>
-            <RadioButton GroupName="Armor" Content="RadioButton" HorizontalAlignment="Left" Margin="0,20,0,0"
+            <RadioButton GroupName="Armor" Checked="Armor_OnChecked" Content="RadioButton" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Armor" Content="RadioButton" HorizontalAlignment="Left" Margin="0,40,0,0"
+            <RadioButton GroupName="Armor" Checked="Armor_OnChecked" Content="RadioButton" HorizontalAlignment="Left" Margin="0,40,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Armor" Content="RadioButton" HorizontalAlignment="Left" Margin="0,60,0,0"
+            <RadioButton GroupName="Armor" Checked="Armor_OnChecked" Content="RadioButton" HorizontalAlignment="Left" Margin="0,60,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Armor" Content="RadioButton" HorizontalAlignment="Left" Margin="0,80,0,0"
+            <RadioButton GroupName="Armor" Checked="Armor_OnChecked" Content="RadioButton" HorizontalAlignment="Left" Margin="0,80,0,0"
                          VerticalAlignment="Top" />
         </Grid>
         <Grid Margin="450 50 0 0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Items</Label>
-            <RadioButton GroupName="Items" Content="ring" HorizontalAlignment="Left" Margin="0,20,0,0"
+            <RadioButton GroupName="Items" Checked="Items_OnChecked" Content="ring" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Items" Content="diamond" HorizontalAlignment="Left" Margin="0,40,0,0"
+            <RadioButton GroupName="Items" Checked="Items_OnChecked" Content="diamond" HorizontalAlignment="Left" Margin="0,40,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Items" Content="RadioButton" HorizontalAlignment="Left" Margin="0,60,0,0"
+            <RadioButton GroupName="Items" Checked="Items_OnChecked" Content="RadioButton" HorizontalAlignment="Left" Margin="0,60,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Items" Content="RadioButton" HorizontalAlignment="Left" Margin="0,80,0,0"
+            <RadioButton GroupName="Items" Checked="Items_OnChecked" Content="RadioButton" HorizontalAlignment="Left" Margin="0,80,0,0"
                          VerticalAlignment="Top" />
         </Grid>
         <Button x:Name="Submit" HorizontalAlignment="Right" VerticalAlignment="top" Margin="100 50" Click="Submit_OnClick">Submit</Button>
+        <Button x:Name="Reset" HorizontalAlignment="Right" VerticalAlignment="top" Margin="50 50" Click="Reset_OnClick">Reset</Button>
         <Grid VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10">
-            <Grid x:Name="FirstCharacter" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 0 0 0">
+            <Grid x:Name="Character0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 0 0 0">
                 <Label Margin="0 20 0 0">R</Label>
                 <Label Margin="0 40 0 0">D</Label>
                 <Label Margin="0 60 0 0">A</Label>
@@ -63,7 +64,7 @@
                 <Label Margin="15 60 0 0">A</Label>
                 <Label Margin="15 80 0 0">H</Label>
             </Grid>
-            <Grid x:Name="SecondCharacter" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100 0 0 0">
+            <Grid x:Name="Character1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100 0 0 0">
                 <Label Margin="0 20 0 0">R</Label>
                 <Label Margin="0 40 0 0">D</Label>
                 <Label Margin="0 60 0 0">A</Label>
@@ -73,7 +74,7 @@
                 <Label Margin="15 60 0 0">A</Label>
                 <Label Margin="15 80 0 0">H</Label>
             </Grid>
-            <Grid x:Name="ThirdCharacter" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200 0 0 0">
+            <Grid x:Name="Character2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200 0 0 0">
                 <Label Margin="0 20 0 0">R</Label>
                 <Label Margin="0 40 0 0">D</Label>
                 <Label Margin="0 60 0 0">A</Label>
@@ -83,7 +84,7 @@
                 <Label Margin="15 60 0 0">A</Label>
                 <Label Margin="15 80 0 0">H</Label>
             </Grid>
-            <Grid x:Name="FourthCharacter" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="300 0 0 0">
+            <Grid x:Name="Character3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="300 0 0 0">
                 <Label Margin="0 20 0 0">R</Label>
                 <Label Margin="0 40 0 0">D</Label>
                 <Label Margin="0 60 0 0">A</Label>
@@ -93,7 +94,7 @@
                 <Label Margin="15 60 0 0">A</Label>
                 <Label Margin="15 80 0 0">H</Label>
             </Grid>
-            <Grid x:Name="FifthCharacter" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400 0 0 0">
+            <Grid x:Name="Character4" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400 0 0 0">
                 <Label Margin="0 20 0 0">R</Label>
                 <Label Margin="0 40 0 0">D</Label>
                 <Label Margin="0 60 0 0">A</Label>
