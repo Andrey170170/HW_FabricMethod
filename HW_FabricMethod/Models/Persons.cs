@@ -5,8 +5,6 @@ namespace HW_FabricMethod.Models;
 
 public abstract class Person
 {
-    public string Name { get; set; }
-
     public int Health { get; set; } = 100;
     public double Armor { get; set; } = 0;
 
@@ -18,6 +16,12 @@ public abstract class Person
     {
         _items.Add(item);
         item.GetItem();
+    }
+
+    protected Person(PersonFactory personFactory)
+    {
+        _weapon = personFactory.CreateWeapon();
+        _items = personFactory.CreateItems();
     }
 }
 
