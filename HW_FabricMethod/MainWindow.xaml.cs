@@ -24,5 +24,11 @@ namespace HW_FabricMethod
         {
             InitializeComponent();
         }
+
+
+        private void Submit_OnClick(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
