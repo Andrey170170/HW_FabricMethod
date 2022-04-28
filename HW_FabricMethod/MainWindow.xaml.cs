@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HW_FabricMethod.Models;
 
 namespace HW_FabricMethod
 {
@@ -23,6 +24,7 @@ namespace HW_FabricMethod
         private int _character = 0;
         private string[] _choices = new string[4];
         private bool isError = false;
+        private List<Person> _persons = new List<Person>();
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +35,29 @@ namespace HW_FabricMethod
         {
             if (_choices.All(choice => choice != null))
             {
+                Weapon selectedWeapon = _choices[1] switch
+                {
+                    "Sword" => new Sword(),
+                    "Axe" => new Axe(),
+                    "Bow" => new Bow()
+                };
+                Armor selectedArmor = _choices[2] switch
+                {
+                    "Chain" => new Chain(),
+                    "Breastplate" => new Breastplate()
+                };
+                Item selectedItem = _choices[3] switch
+                {
+                    "Ring" => new Ring(),
+                    "Brilliant" => new Brilliant()
+                };
+                _persons.Add(new Person(new CustomFactory(selectedWeapon, selectedArmor, new()
+                {
+                    selectedItem, selectedWeapon, selectedArmor
+                })));
+
+                var temp = _persons;
+                
                 MessageBox.Show(_choices.Aggregate("", (current, choice) => current + ", " + choice) + "; " + _character);
                 _character += 1;
                 _choices = new string[4];
@@ -55,19 +80,19 @@ namespace HW_FabricMethod
                 }
             }
         }
+
         private void Reset_OnClick(object sender, RoutedEventArgs e)
         {
-            
-                List<RadioButton> radioButtons = new List<RadioButton>();
-                WalkLogicalTree(radioButtons, rootpanel);
-                foreach (RadioButton rb in radioButtons)
-                {
-                    rb.IsChecked = false;
-                }
+            List<RadioButton> radioButtons = new List<RadioButton>();
+            WalkLogicalTree(radioButtons, rootpanel);
+            foreach (RadioButton rb in radioButtons)
+            {
+                rb.IsChecked = false;
+            }
 
-                _character = 0;
-                _choices = new string[4];
-                isError = false;
+            _character = 0;
+            _choices = new string[4];
+            isError = false;
         }
 
         private void Race_OnChecked(object sender, RoutedEventArgs e)
