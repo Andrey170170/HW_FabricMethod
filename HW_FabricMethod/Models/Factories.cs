@@ -9,7 +9,7 @@ public abstract class PersonFactory
     public abstract List<Item> CreateItems();
 }
 
-public class CustomFactory : PersonFactory
+public class HumanFactory : PersonFactory
 {
     private Weapon _weapon;
     private Armor _armor;
@@ -18,7 +18,7 @@ public class CustomFactory : PersonFactory
     public override Armor CreateArmor() => _armor;
     public override List<Item> CreateItems() => _items;
 
-    public CustomFactory(Weapon weapon, Armor armor, List<Item> items)
+    public HumanFactory(Weapon weapon, Armor armor, List<Item> items)
     {
         _weapon = weapon;
         _armor = armor;
@@ -26,7 +26,7 @@ public class CustomFactory : PersonFactory
     }
 }
 
-public class HumanFactory : PersonFactory
+public class TauFactory : PersonFactory
 {
     public override Weapon CreateWeapon() => new Sword();
     public override Armor CreateArmor() => new Breastplate();

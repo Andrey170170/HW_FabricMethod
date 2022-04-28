@@ -9,16 +9,16 @@
     <Grid Name="rootpanel">
         <Grid Margin="10 50" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Race</Label>
+            <RadioButton x:Name="HumanCheck" GroupName="Race" Content="Human" Checked="Race_OnChecked" HorizontalAlignment="Left" Margin="0,60,0,0"
+                         VerticalAlignment="Top" />
             <RadioButton GroupName="Race" Content="Orc" Checked="Race_OnChecked" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />
             <RadioButton GroupName="Race" Content="Aeldari" Checked="Race_OnChecked"  HorizontalAlignment="Left" Margin="0,40,0,0"
                          VerticalAlignment="Top" />
-            <RadioButton GroupName="Race" Content="Human" Checked="Race_OnChecked" HorizontalAlignment="Left" Margin="0,60,0,0"
-                         VerticalAlignment="Top" />
             <RadioButton GroupName="Race" Content="Tau" Checked="Race_OnChecked" HorizontalAlignment="Left" Margin="0,80,0,0"
                          VerticalAlignment="Top" />
         </Grid>
-        <Grid Margin="150 50 0 0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid x:Name="WeaponGrid" Margin="150 50 0 0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Weapon</Label>
             <RadioButton GroupName="Weapon" Checked="Weapon_OnChecked" Content="Sword" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />
@@ -27,14 +27,14 @@
             <RadioButton GroupName="Weapon" Checked="Weapon_OnChecked" Content="Bow" HorizontalAlignment="Left" Margin="0,60,0,0"
                          VerticalAlignment="Top" />
         </Grid>
-        <Grid Margin="300 50" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid x:Name="ArmorGrid" Margin="300 50" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Armor</Label>
             <RadioButton GroupName="Armor" Checked="Armor_OnChecked" Content="Chain" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />
             <RadioButton GroupName="Armor" Checked="Armor_OnChecked" Content="Breastplate" HorizontalAlignment="Left" Margin="0,40,0,0"
                          VerticalAlignment="Top" />
         </Grid>
-        <Grid Margin="450 50 0 0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <Grid x:Name="ItemGrid" Margin="450 50 0 0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Label HorizontalAlignment="Center">Items</Label>
             <RadioButton GroupName="Items" Checked="Items_OnChecked" Content="Ring" HorizontalAlignment="Left" Margin="0,20,0,0"
                          VerticalAlignment="Top" />

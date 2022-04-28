@@ -24,7 +24,7 @@ namespace HW_FabricMethod
         private int _character = 0;
         private string[] _choices = new string[4];
         private bool isError = false;
-        private List<Person> _persons = new List<Person>();
+        private static List<Person> _persons = new List<Person>();
         public MainWindow()
         {
             InitializeComponent();
@@ -35,28 +35,38 @@ namespace HW_FabricMethod
         {
             if (_choices.All(choice => choice != null))
             {
-                Weapon selectedWeapon = _choices[1] switch
+                if (_choices[0] == "Human")
                 {
-                    "Sword" => new Sword(),
-                    "Axe" => new Axe(),
-                    "Bow" => new Bow()
-                };
-                Armor selectedArmor = _choices[2] switch
+                    Weapon selectedWeapon = _choices[1] switch
+                    {
+                        "Sword" => new Sword(),
+                        "Axe" => new Axe(),
+                        "Bow" => new Bow()
+                    };
+                    Armor selectedArmor = _choices[2] switch
+                    {
+                        "Chain" => new Chain(),
+                        "Breastplate" => new Breastplate()
+                    };
+                    Item selectedItem = _choices[3] switch
+                    {
+                        "Ring" => new Ring(),
+                        "Brilliant" => new Brilliant()
+                    };
+                    _persons.Add(new Person(new HumanFactory(selectedWeapon, selectedArmor, new()
+                    {
+                        selectedItem, selectedWeapon, selectedArmor
+                    })));
+                }
+                else
                 {
-                    "Chain" => new Chain(),
-                    "Breastplate" => new Breastplate()
-                };
-                Item selectedItem = _choices[3] switch
-                {
-                    "Ring" => new Ring(),
-                    "Brilliant" => new Brilliant()
-                };
-                _persons.Add(new Person(new CustomFactory(selectedWeapon, selectedArmor, new()
-                {
-                    selectedItem, selectedWeapon, selectedArmor
-                })));
-
-                var temp = _persons;
+                    _persons.Add(_choices[0] switch
+                    {
+                        "Orc" => new Person(new OrcFactory()),
+                        "Aeldari" => new Person(new AeldariFactory()),
+                        "Tau" => new Person(new TauFactory())
+                    });
+                }
                 
                 MessageBox.Show(_choices.Aggregate("", (current, choice) => current + ", " + choice) + "; " + _character);
                 _character += 1;
@@ -68,8 +78,27 @@ namespace HW_FabricMethod
                     rb.IsChecked = false;
                 }
             }
+            else if (_choices[0] != "Human")
+            {
+                _persons.Add(_choices[0] switch
+                {
+                    "Orc" => new Person(new OrcFactory()),
+                    "Aeldari" => new Person(new AeldariFactory()),
+                    "Tau" => new Person(new TauFactory())
+                });
+                
+                _character += 1;
+                _choices = new string[4];
+                List<RadioButton> radioButtons = new List<RadioButton>();
+                WalkLogicalTree(radioButtons, rootpanel);
+                foreach (RadioButton rb in radioButtons)
+                {
+                    rb.IsChecked = false;
+                }
+            }
             else
             {
+                MessageBox.Show("Пожалуйста, выберите все пункты!");
                 _character = 0;
                 _choices = new string[4];
                 List<RadioButton> radioButtons = new List<RadioButton>();
@@ -97,7 +126,21 @@ namespace HW_FabricMethod
 
         private void Race_OnChecked(object sender, RoutedEventArgs e)
         {
-            _choices[0] = (sender as RadioButton)?.Content.ToString();
+            if (sender != null && sender is RadioButton)
+            {
+                if ((_choices[0] = (sender as RadioButton)?.Content.ToString()) == "Human")
+                {
+                    WeaponGrid.Visibility = Visibility.Visible;
+                    ArmorGrid.Visibility = Visibility.Visible;
+                    ItemGrid.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    WeaponGrid.Visibility = Visibility.Hidden;
+                    ArmorGrid.Visibility = Visibility.Hidden;
+                    ItemGrid.Visibility = Visibility.Hidden;
+                }
+            }
         }
         private void Weapon_OnChecked(object sender, RoutedEventArgs e)
         {
