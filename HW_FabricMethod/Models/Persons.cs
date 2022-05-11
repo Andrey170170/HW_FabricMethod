@@ -8,11 +8,11 @@ public class Person
     public int Health { get; set; } = 100;
     public string Race { get; set; }
 
-    private Weapon _weapon;
-    private Armor _armor;
+    public Weapon Weapon;
+    public Armor Armor;
     private List<Item> _items;
 
-    public void Hit() =>_weapon.Hit();
+    public void Hit() =>Weapon.Hit();
     public void GetItem(Item item)
     {
         _items.Add(item);
@@ -21,7 +21,9 @@ public class Person
 
     public Person(PersonFactory personFactory)
     {
-        _weapon = personFactory.CreateWeapon();
+        Race = personFactory.CreateRace();
+        Weapon = personFactory.CreateWeapon();
+        Armor = personFactory.CreateArmor();
         _items = personFactory.CreateItems();
     }
 }

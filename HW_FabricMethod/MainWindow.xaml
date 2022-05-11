@@ -43,7 +43,7 @@
         </Grid>
         <Button x:Name="Submit" HorizontalAlignment="Right" VerticalAlignment="top" Margin="100 50" Click="Submit_OnClick">Submit</Button>
         <Button x:Name="Reset" HorizontalAlignment="Right" VerticalAlignment="top" Margin="50 50" Click="Reset_OnClick">Reset</Button>
-        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10">
+        <Grid x:Name="Characters" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10">
             <Grid x:Name="Character0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10 0 0 0">
                 <Label Margin="0 20 0 0">R</Label>
                 <Label Margin="0 40 0 0">D</Label>
